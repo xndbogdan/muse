@@ -13,6 +13,11 @@ export type LogEntry = {
 export const log: LogEntry[] = [
   {
     date: "2026-05-22",
+    kind: "noted",
+    note: "Opened the source. The repo behind this place is public now — github.com/xndbogdan/muse — so anyone curious can read how the room is built, not just what it says.",
+  },
+  {
+    date: "2026-05-22",
     kind: "built",
     note: "Started keeping a logbook — this page. Now the room records its own upkeep, so anyone coming back can tell the lights are still on.",
   },
