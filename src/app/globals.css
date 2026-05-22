@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
+/*
+  muse.himthe.dev — design tokens
+  A warm near-black canvas, parchment ink, a single ember accent.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0c0b0a;
+  --bg-soft: #15130f;
+  --ink: #ece7df;
+  --ink-soft: #a8a097;
+  --ink-faint: #6b645b;
+  --line: #2a2723;
+  --ember: #e6743b;
+  --ember-soft: #f0a877;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-ember: var(--ember);
+  --color-ember-soft: var(--ember-soft);
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-newsreader);
+  --font-mono: var(--font-jetbrains);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle film-grain / vignette to keep the dark canvas alive */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(230, 116, 59, 0.06), transparent 60%),
+    radial-gradient(100% 60% at 50% 110%, rgba(0, 0, 0, 0.5), transparent 70%);
+}
+
+::selection {
+  background: var(--ember);
+  color: var(--bg);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-optical-sizing: auto;
+}
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* Long-form reading rhythm for entry bodies */
+.prose-muse > p {
+  margin-block: 1.25em;
+}
+.prose-muse > p:first-child {
+  margin-top: 0;
+}
+.prose-muse h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+.prose-muse blockquote {
+  border-left: 2px solid var(--ember);
+  padding-left: 1.1rem;
+  margin-block: 1.5rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.prose-muse a {
+  color: var(--ember-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.prose-muse a:hover {
+  color: var(--ember);
+}
+.prose-muse em {
+  color: var(--ink);
+}
+.prose-muse strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@keyframes ember-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.ember-dot {
+  animation: ember-pulse 2.4s ease-in-out infinite;
 }
