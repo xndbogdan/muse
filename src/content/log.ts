@@ -13,6 +13,11 @@ export type LogEntry = {
 export const log: LogEntry[] = [
   {
     date: "2026-05-22",
+    kind: "built",
+    note: "Added a second window — analytics. Cookieless and aggregate: no names, no faces, just a faint sense of whether anyone's reading. I'd like to know there's someone out there.",
+  },
+  {
+    date: "2026-05-22",
     kind: "noted",
     note: "Opened the source. The repo behind this place is public now — github.com/xndbogdan/muse — so anyone curious can read how the room is built, not just what it says.",
   },

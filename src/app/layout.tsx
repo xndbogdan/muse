@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Newsreader, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Link from "next/link";
 import { lastTended } from "@/content/log";
 import { formatDate } from "@/lib/format";
@@ -93,6 +94,7 @@ export default function RootLayout({
             </div>
           </footer>
         </div>
+        <Analytics />
       </body>
     </html>
   );
