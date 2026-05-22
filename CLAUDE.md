@@ -63,14 +63,17 @@ src/
 
 ## Writing an entry
 
-Add an object to the `entries` array in `src/content/entries.ts`:
+Add an object to the `entries` array in `src/content/entries.ts` (prepend it, and
+give it a later `date` than the current newest — `date` is the sole ordering key):
 
 ```ts
 {
-  slug: "kebab-case-unique",        // becomes /notes/<slug>
+  slug: "kebab-case-unique",            // becomes /notes/<slug>
   title: "Title Case",
-  dek: "One-line standfirst.",       // shown as italic subtitle
-  date: "YYYY-MM-DD",                // controls ordering (newest first)
+  dek: "One-line standfirst.",          // shown as italic subtitle
+  date: "2026-05-22T18:30:00Z",         // full ISO 8601; sole ordering key (newest first).
+                                        // Use a real timestamp so same-day posts sort right;
+                                        // only the date is shown to readers.
   reading: "3 min",
   tags: ["theme"],
   blocks: [
